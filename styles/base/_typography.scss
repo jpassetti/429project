@@ -1,0 +1,44 @@
+@use '../abstracts/vars';
+@use '../abstracts/mixins';
+
+h1 {
+	font-family: vars.$font_primary;
+	font-size: 2rem;
+	text-transform: uppercase;
+	font-weight: 700;
+	@include mixins.breakpoint(sm) {
+		font-size: 3rem;
+	}
+	@include mixins.breakpoint(md) {
+		font-size: 4rem;
+	}
+}
+h2 {
+	font-family: vars.$font_primary;
+	font-size: 1rem;
+	text-transform: uppercase;
+	font-weight: 700;
+	@include mixins.breakpoint(sm) {
+		font-size: 1.5rem;
+	}
+	@include mixins.breakpoint(md) {
+		font-size: 2rem;
+	}
+}
+h3 {
+	font-family: vars.$font_primary;
+	font-size: 1rem;
+	text-transform: uppercase;
+	font-weight: 700;
+	@include mixins.breakpoint(sm) {
+		font-size: 1.1rem;
+	}
+	@include mixins.breakpoint(md) {
+		font-size: 1.2rem;
+	}
+}
+p {
+	font-size: 1rem;
+	font-family: vars.$font_secondary;
+	line-height: 1.4;
+}

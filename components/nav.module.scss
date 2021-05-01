@@ -1,0 +1,26 @@
+@use '../styles/abstracts/vars';
+@use '../styles/abstracts/mixins';
+
+.nav {
+	ul {
+		display: flex;
+		li {
+			margin: 0 .5rem;
+			a {
+				font-family: vars.$font_primary;
+				text-decoration: none;
+				border-bottom: 3px solid black;
+				display: block;
+				padding: 1rem 0;
+				cursor: pointer;
+				&:hover {
+					color: green;
+				}
+				&.active {
+					color: red !important;
+					border-bottom: 3px solid red;
+				}
+			}
+		}
+	}
+}
