@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import * as Scroll from 'react-scroll';
 
-import Navigation from './Navigation'
+import Navigation from './navigation'
 
 import styles from './header.module.scss'
 
