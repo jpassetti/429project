@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import * as Scroll from 'react-scroll';
 
-import Nav from './Nav'
+import Navigation from './Navigation'
 
 import styles from './header.module.scss'
 
@@ -10,7 +10,7 @@ let scroll = Scroll.animateScroll;
 
 export default function Header() {
 	return <header className={styles.header}>
-		<Nav>
+		<Navigation>
 			<ul>
 				<li>
 					<Link href="/" onClick={() => scroll.scrollTo("test1")}>
@@ -32,6 +32,6 @@ export default function Header() {
 					<ScrollLink activeClass="active" to="artists" spy={true} smooth={true} duration={500}>Artists</ScrollLink>
 				</li>
 			</ul>
-		</Nav>
+		</Navigation>
 	</header>
 }
