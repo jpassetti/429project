@@ -1,0 +1,38 @@
+@use '../styles/abstracts/vars';
+@use '../styles/abstracts/mixins';
+
+.flyoutMenu {
+	background-color: vars.$color_red;
+	width: 100%;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	right: 0;
+	z-index: 100;
+	transition: all .5s;
+	padding: 1rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	@include mixins.breakpoint(md) {
+		width: 30vw;
+	}
+}
+.flyoutHeader {
+	color: vars.$color_white;
+	width: 70%;
+}
+.blobWave {
+	width: 10rem;
+		height: 100vh;
+		//background-color: yellow;
+		position: absolute;
+		top: 0;
+		left:-10rem;
+		img {
+		width: 10rem !important;
+		height: 100vh !important;
+		max-width: 10rem !important;
+		max-height: 100vh !important;
+		}
+}

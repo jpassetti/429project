@@ -4,8 +4,10 @@
 h1 {
 	font-family: vars.$font_primary;
 	font-size: 2rem;
+	line-height: 1;
 	text-transform: uppercase;
 	font-weight: 700;
+	margin-bottom: 1rem;
 	@include mixins.breakpoint(sm) {
 		font-size: 3rem;
 	}
@@ -18,11 +20,17 @@ h2 {
 	font-size: 1rem;
 	text-transform: uppercase;
 	font-weight: 700;
+	margin-bottom: 1rem;
 	@include mixins.breakpoint(sm) {
 		font-size: 1.5rem;
 	}
 	@include mixins.breakpoint(md) {
-		font-size: 2rem;
+		font-size: 3rem;
+	}
+	&.dek {
+		text-transform: none;
+		font-style: italic;
+		font-weight: 300;
 	}
 }
 h3 {
@@ -30,6 +38,7 @@ h3 {
 	font-size: 1rem;
 	text-transform: uppercase;
 	font-weight: 700;
+	margin-bottom: 1rem;
 	@include mixins.breakpoint(sm) {
 		font-size: 1.1rem;
 	}
@@ -41,4 +50,10 @@ p {
 	font-size: 1rem;
 	font-family: vars.$font_secondary;
 	line-height: 1.4;
+	margin-bottom: 1rem;
+	&.intro {
+		font-size: 1.5rem;
+		font-family: vars.$font_primary;
+		font-weight: 300;
+	}
 }

@@ -1,0 +1,25 @@
+@use '../styles/abstracts/vars';
+@use '../styles/abstracts/mixins';
+
+.cta {
+	padding: .5rem 2rem;
+	border: 1px solid vars.$color_lightblue;
+	font-family: vars.$font_primary;
+	font-size: 1.1rem;
+	font-weight: bold;
+	color: vars.$color_black;
+	text-decoration: none;
+	transition: all .5s;
+	margin-top: 1rem;
+	display: inline-block;
+	margin-right: 1rem;
+	&_group {
+		display: flex;
+	}
+	&.primary {
+		background-color: vars.$color_lightblue;
+	}
+	&.secondary {
+		background-color: vars.$color_white;
+	}
+}

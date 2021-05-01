@@ -1,0 +1,27 @@
+@use '../styles/abstracts/vars';
+@use '../styles/abstracts/mixins';
+
+.primary {
+	display: flex;
+	flex-direction: column;
+	li {
+		margin: 0 .5rem;
+		a {
+			font-family: vars.$font_primary;
+			text-decoration: none;
+			display: block;
+			padding: 1rem 0;
+			cursor: pointer;
+			font-size: 2rem;
+			font-weight: bold;
+			color: vars.$color_white;
+		}
+		p {
+			color: vars.$color_white;
+		}
+	}
+}
+.secondary {
+	display: flex;
+	flex-direction: column;
+}

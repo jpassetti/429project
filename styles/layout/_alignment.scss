@@ -1,0 +1,13 @@
+@use '../abstracts/mixins';
+
+.text-align-center-tablet{
+    @include mixins.breakpoint(tablet){
+        text-align: center;
+    }
+}
+
+.text-align-right-tablet{
+    @include mixins.breakpoint(tablet){
+        text-align: right;
+    }
+}
