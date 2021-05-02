@@ -52,9 +52,8 @@ export default function Region({name, tagline}) {
 			<Masonry columnsCount={3} gutter="10px">
 				{
 					sampleProjects.map((project,i) => {
-						return <div className="col col--sm--4">
+						return <div key={`${name.toLowerCase()}${i}`} className="col col--sm--4">
 							<Image 
-								key={i}
 								src={`/images/${project.image}`}
 								alt="Alt text goes here"
 								width={1920}
