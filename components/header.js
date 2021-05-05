@@ -24,11 +24,15 @@ export default function Header() {
 		{
 			isMenuOpen &&
 				<FlyoutMenu isMenuOpen>
-					<ButtonUI className="flyoutCloseBtn" icon="close" clickHandler={() => { setIsMenuOpen(!isMenuOpen) }} />
+					<ButtonUI type="close" id="flyoutMenuCloseBtn" clickHandler={() => { setIsMenuOpen(!isMenuOpen) }} />
 				</FlyoutMenu>
 		}
-		<Logo />
-		<ButtonUI icon="menu" clickHandler={() => {setIsMenuOpen(!isMenuOpen)}} />
+		<Link href="/">
+			<a>
+			<Logo />
+			</a>
+		</Link>
+		<ButtonUI type="menu" clickHandler={() => {setIsMenuOpen(!isMenuOpen)}} />
 		{/*<Navigation>
 			<ul>
 				<li>

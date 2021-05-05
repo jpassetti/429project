@@ -1,8 +1,25 @@
+import classNames from 'classnames/bind';
+
+import Image from 'next/image'
+
 import styles from './button-ui.module.scss'
 
-export default function ButtonUI({className='', clickHandler=null, icon}) {
+let cx = classNames.bind(styles);
 
-	const theClass = className === 'flyoutCloseBtn' ? styles.flyoutCloseBtn : '';
+export default function ButtonUI({type, id, clickHandler=null, icon}) {
 
-	return <button className={theClass} onClick={clickHandler}>{icon}</button>
+	let btnClasses = cx({
+		['btn-ui']: true,
+		['close'] : type === 'close',
+		['menu']: type === 'menu'
+	});
+
+	return <button id={id} className={btnClasses} onClick={clickHandler}>
+			<Image 
+				src={`/images/icons/icon-${type}.svg`}
+				width={50}
+				height={50}
+				alt={`${type} icon`}
+			/>
+		</button>
 }

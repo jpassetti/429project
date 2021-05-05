@@ -9,9 +9,15 @@ h1 {
 	font-weight: 700;
 	margin-bottom: 1rem;
 	@include mixins.breakpoint(sm) {
-		font-size: 3rem;
+		font-size: 2rem;
 	}
 	@include mixins.breakpoint(md) {
+		font-size: 2.5rem;
+	}
+	@include mixins.breakpoint(lg) {
+		font-size: 3rem;
+	}
+	@include mixins.breakpoint(xl) {
 		font-size: 4rem;
 	}
 }
@@ -44,6 +50,30 @@ h3 {
 	}
 	@include mixins.breakpoint(md) {
 		font-size: 1.2rem;
+	}
+}
+h4 {
+	font-family: vars.$font_primary;
+	font-size: 0.9rem;
+	text-transform: uppercase;
+	font-weight: 700;
+	margin-bottom: 1rem;
+	@include mixins.breakpoint(sm) {
+		font-size: 1rem;
+	}
+	@include mixins.breakpoint(md) {
+		font-size: 1.1rem;
+	}
+	span.pipe {
+		color: vars.$color_red;
+		margin-left: 0.25rem;
+		margin-right: 0.25rem;
+		font-weight: 300;
+	}
+	span.title {
+		font-weight: 400;
+		font-style: italic;
+		text-transform: none;
 	}
 }
 p {

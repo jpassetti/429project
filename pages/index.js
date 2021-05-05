@@ -18,6 +18,7 @@ export default function Index({ allPosts: { edges }, preview }) {
 	const [isPaused, setIsPaused] = useState(false);
 
 	const morePosts = edges.slice(0);
+	console.log({morePosts});
 
 	const buttonStyle = {
 		display: 'block',
@@ -32,6 +33,29 @@ export default function Index({ allPosts: { edges }, preview }) {
 			preserveAspectRatio: 'xMidYMid slice'
 		}
 	};
+
+	const categories = [
+		{
+			name: "Reform",
+			slug: "reform",
+			description: "Not only the way we design, but the value behind our message."
+		},
+		{
+			name: "Cherish",
+			slug: "cherish",
+			description: "The stories we are able to tell, and the visuals we are embodied to create."
+		},
+		{
+			name: "Envision",
+			slug: "envision",
+			description: "A better future through the creative vision we have the power to tell"
+		},
+		{
+			name: "Reflect",
+			slug: "reflect",
+			description: "On our triumphs, our failures and our success as humans and creatives"
+		},
+	];
 	
 	return (
     <Layout>
@@ -42,27 +66,30 @@ export default function Index({ allPosts: { edges }, preview }) {
 		<Container>
       		<main>
 				<HomeIntro />
-					<div className={`${blobs.blob} ${blobs.blob1}`}>
+				<div className={`${blobs.blob} ${blobs.blob1}`}>
 					<Lottie options={defaultOptions}
 						height={400}
 						width={400}
 						isStopped={isStopped}
 						isPaused={isPaused}
-						/>
-					</div>
-					<div className={`${blobs.blob} ${blobs.blob2}`}>
-						<Lottie options={defaultOptions}
-							height={400}
-							width={400}
-							isStopped={isStopped}
-							isPaused={isPaused}
-						/>
-					</div>
-					<Region name="Reform" tagline="Not only the way we design, but the
- value behind our message" />
-					<Region name="Cherish" tagline="The stories we are able to tell, and the visuals we are embodied to create." />
-					<Region name="Envision" tagline="A better future through the creative vision we have the power to tell" />
-					<Region name="Reflect" tagline="On our triumphs, our failures and our success as humans and creatives" />
+					/>
+				</div>
+				<div className={`${blobs.blob} ${blobs.blob2}`}>
+					<Lottie options={defaultOptions}
+						height={400}
+						width={400}
+						isStopped={isStopped}
+						isPaused={isPaused}
+					/>
+				</div>
+					{
+						categories.map((category,i) => {
+							const filteredPosts = morePosts.filter(function(post) {
+								return post.node.categories.edges[0].node.slug === category.slug;
+							});
+							return <Region name={category.name} tagline={category.description} posts={filteredPosts} key={`region${i}`} />
+						})
+					}
 					<MeetTheArtists />
       		</main> 
 			</Container>

@@ -1,20 +1,26 @@
 @use '../styles/abstracts/mixins';
 
 .container {
-	width: 100%;
-	padding-left: 1rem;
-	padding-right: 1rem;
-	margin: 0 auto;
-	@include mixins.breakpoint(sm) {
-		width: 700px
-	}
-	@include mixins.breakpoint(md) {
-		width: 980px
-	}
-	@include mixins.breakpoint(lg) {
-		width: 1140px
-	}
-	&--content {
+    //background-color: coral;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin: 0px auto;
+    @include mixins.breakpoint(sm){
+        width: 640px;
+    }
+    @include mixins.breakpoint(md){
+        width: 768px;
+    }
+    @include mixins.breakpoint(lg){
+        width: 1024px;
+    }
+	@include mixins.breakpoint(xl){
+        width: 1280px;
+    }
+	@include mixins.breakpoint(2xl){
+        width: 1536px;
+    }
+	&--content{
 		width: 100%;
 		padding-left: 1rem;
 		padding-right: 1rem;

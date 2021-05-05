@@ -1,0 +1,29 @@
+@use '../styles/abstracts/mixins';
+
+.row {
+    //background-color: darksalmon;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -1rem;
+    margin-right: -1rem;
+	position: relative;
+	z-index: 1;
+	width: 100%;
+    &.justify-content-center {
+        justify-content: center;
+	}
+	&.justify-content-space-between {
+		justify-content: space-between;
+	}
+    &.justify-content-center-tablet {
+        @include mixins.breakpoint(tablet){
+            justify-content: center;
+            }
+    }
+    &.flex-direction-row-reverse-tablet {
+        flex-direction:row-reverse;
+    }
+	&.align-items-center {
+		align-items: center;
+	}
+}

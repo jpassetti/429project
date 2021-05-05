@@ -1,5 +1,19 @@
+@use '../styles/abstracts/vars';
+
 .btn-ui {
-	background-color: yellow;
+	border: 0;
+	width: 3rem;
+	height: 3rem;
+	background-color:transparent;
+	cursor: pointer;
+	&.close {
+		position: absolute;
+		top: 1rem;
+		right: 1rem;
+	}
+	&.menu {
+		background-color: vars.$color_red;
+	}
 }
 .flyoutCloseBtn {
 	position: absolute;

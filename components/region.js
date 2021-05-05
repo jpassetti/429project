@@ -1,6 +1,15 @@
+import { useContext } from 'react'
+
 import Section from './section'
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry"
-import Image from 'next/image'
+
+import Row from './row'
+import Col from './col'
+import Card from './card'
+
+import {
+	OverlayDisplayContext, OverlayContentContext
+} from '../context/overlay';
 
 const sampleProjects = [
 	{
@@ -40,26 +49,35 @@ const sampleProjects = [
 	},
 ];
 
-export default function Region({name, tagline}) {
+export default function Region({name, tagline, posts}) {
+	console.log({posts});
 
+	const [isOverlayVisible, setOverlayVisible] = useContext(OverlayDisplayContext);
+	const [overlayContent, setOverlayContent] = useContext(OverlayContentContext);
 	return (
 		<Section id={name.toLowerCase()}>
-			<h2>{name}</h2>
-			<p className="intro">{tagline}</p>
+			<Row>
+				<Col sm={5}>
+					<h2>{name}</h2>
+					<p className="intro">{tagline}</p>
+				</Col>
+			</Row>
+			
 			<ResponsiveMasonry
-				columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}
+				columnsCountBreakPoints={{ 768: 2, 1280: 3 }}
 			>
-			<Masonry columnsCount={3} gutter="10px">
+			<Masonry columnsCount={3} gutter="16px">
 				{
-					sampleProjects.map((project,i) => {
-						return <div key={`${name.toLowerCase()}${i}`} className="col col--sm--4">
-							<Image 
-								src={`/images/${project.image}`}
-								alt="Alt text goes here"
-								width={1920}
-								height={1200}
-							/>
-						</div>
+					posts.map((post,i) => {
+						const {node} = post;
+						return <Card 
+							key={`post${i}`} 
+							node={node} 
+							clickHandler={() => {
+								setOverlayVisible(true)
+								setOverlayContent(node)
+							}} />
+						
 					})
 				}
 			</Masonry>

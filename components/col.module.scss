@@ -1,0 +1,73 @@
+@use '../styles/abstracts/mixins';
+
+.col {
+	padding-left: 1rem;
+	padding-right: 1rem;
+	width: 100%;
+	margin-bottom: 1rem;
+	&--2{
+		width: 16.66666%;
+
+	}
+	&--3{
+		width: 25%;
+
+	}
+	&--6{
+		width: 50%;
+
+	}
+	&--9{
+		width: 75%;
+
+	}
+	&.vertical-align {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+	//background-color: hotpink;
+	
+	@include mixins.breakpoint(xs){
+		&.xs--auto {
+			width: 100%;
+		}
+		@for $i from 1 through 12 {
+			&.xs--#{$i} {
+				width: calc(100% * (#{$i}/12));
+			}	
+		}
+	} //phone ends
+	
+	@include mixins.breakpoint(sm){
+		&.sm--auto {
+			width: 100%;
+		}
+		@for $i from 1 through 12 {
+			&.sm--#{$i} {
+				width: calc(100% * (#{$i}/12));
+			}	
+		}
+	} // col tablet
+	@include mixins.breakpoint(md){
+		&.md--auto {
+			width: 100%;
+		}
+		@for $i from 1 through 12 {
+			&.md--#{$i} {
+				width: calc(100% * (#{$i}/12));
+			}	
+		}
+	} // col tablet
+	@include mixins.breakpoint(lg){
+		&.lg--auto {
+			width: 100%;
+		}
+		@for $i from 1 through 12 {
+			&.lg--#{$i} {
+				width: calc(100% * (#{$i}/12));
+			}	
+		}
+	} // col tablet
+} // col
+
