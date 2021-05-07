@@ -1,0 +1,38 @@
+@use '../styles/abstracts/vars';
+
+.frame {
+	position: relative;
+	
+}
+.frame_tint {
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0,0,0,0.25);
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 5;
+	}
+.frame_icon {
+	width: 3.5rem;
+	height: 3.5rem;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	z-index: 10;
+	transform: translate(-50%, -50%);
+	background-color: vars.$color_red;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	transition: all .5s;
+	transform-origin: center center;
+	&:hover {
+		transform: scale(1.1) translate(-50%, -50%);
+	}
+	img {
+		width: 1.75rem;
+	}
+}

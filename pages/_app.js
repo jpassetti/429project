@@ -1,4 +1,5 @@
-import { useState, createContext } from 'react'
+import { useState } from 'react'
+import SimpleReactLightbox from 'simple-react-lightbox-pro'
 
 
 import '../styles/global.scss'
@@ -13,7 +14,9 @@ export default function App({ Component, pageProps }) {
 
 	return <OverlayDisplayContext.Provider value={[isOverlayVisible, setOverlayVisible]}>
 		<OverlayContentContext.Provider value={[overlayContent, setOverlayContent]}>
-			<Component {...pageProps} />
+			<SimpleReactLightbox>
+				<Component {...pageProps} />
+			</SimpleReactLightbox>
 		</OverlayContentContext.Provider>
 	</OverlayDisplayContext.Provider>
 }
