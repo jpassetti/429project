@@ -19,7 +19,7 @@ export default function HomeIntro() {
 	return <Section>
 		<Row>
 			<Col lg={5}>
-				<h1>Creativity through pause</h1>
+				<h1>Creativity through paused</h1>
 				<h2 className="dek">429 days. 128 projects.</h2>
 				<p>When the world hit pause, so did our plans for classes, graduation, and careers. We learned to connect, to value our own health, and to continue moving forward. We continued to create.</p>
 
