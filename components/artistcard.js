@@ -1,39 +1,40 @@
-import Image from 'next/image'
+import BioImage from './BioImage'
+import Col from './col'
+import Heading from './Heading'
 import Link from 'next/link'
+import Row from './row'
 
-import styles from './artistcard.module.scss'
+import { formatRoles } from '../lib/utils'
 
 export default function ArtistCard({node}) {
-	const { title, featuredImage, slug, artistInformation, roles, years } = node;
-	const rolesArr = roles.edges.map(role => {
-		return role.node.name;
-	})
-	const rolesJoined = rolesArr.join('<span>|</span>')
-	return (
-		<div className={styles.artist_card}>
-			<Link href={`/artists/${slug}`}>
-				<a>
-					<Image
-						src={featuredImage.node.sourceUrl}
-						alt={featuredImage.node.altText}
-						width={featuredImage.node.mediaDetails.width}
-						height={featuredImage.node.mediaDetails.height}
-						className={`${styles.artist_image}`}
-					/>
-				</a>
-			</Link>
-			<h3 className={styles.artist_name}>
-				<Link href={`/artists/${slug}`}>
-					<a>
-						{title}
-					</a>
-				</Link>
-			</h3>
-			<h4 className={styles.artist_year}>{years.edges.map(year => {
-					return year.node.name;
-			})}</h4>
-			<h5 className={styles.artist_role} dangerouslySetInnerHTML={{ __html:rolesJoined }}></h5>
+	const { title, slug, featuredImage, years, roles, relatedPost } = node;
+	return relatedPost.relatedProjectArtist !== null ?
+			<Col xs="12" sm="4" textAlign="center" marginBottom="10" flexDirection="column" justifyContent="center">
+				<Row justifyContent="center">
+					<Col xs="8" sm="8" marginBottom="0">
+						{featuredImage &&
+							<Link href={`/artists/${slug}`}>
+								<a>
+									<BioImage featuredImage={featuredImage} />
+								</a>
+							</Link>
+						}
 
-		</div>
-	)
+					</Col>
+				</Row>
+
+
+				<Heading level="2" textTransform="none" size="small">
+					<Link href={`/artists/${slug}`}><a>{title}</a>
+					</Link></Heading>
+				{
+					years.edges.map((year, index) => {
+						return <Heading key={index} level="4" marginBottom="2">{year.node.name}</Heading>
+					})
+				}
+				{
+					roles && <Heading level="5">{formatRoles(roles)}</Heading>
+				}
+			</Col>
+		: ''
 }

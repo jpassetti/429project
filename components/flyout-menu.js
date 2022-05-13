@@ -73,7 +73,7 @@ export default function FlyoutMenu({isMenuOpen, children}) {
 		<Navigation>
 			<List type="secondary">
 				<List.Item>
-					<Link href="/meet-the-artists">
+					<Link href="/artists">
 						<a>Meet the artists</a>
 					</Link>
 				</List.Item>

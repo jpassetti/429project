@@ -16,7 +16,7 @@ const FooterNav = ({children}) => {
 		},
 		{
 			label: "Meet the Artists",
-			slug: "meet-the-artists"
+			slug: "artists"
 		},
 		{
 			label: "Team",

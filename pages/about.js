@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import Layout from '../components/layout'
 import Col from '../components/col'
 import Heading from '../components/Heading'
@@ -21,6 +22,10 @@ export default function About({pageData}) {
 	const {title, content} = pageData;
 	return (
 		<Layout>
+			<Head>
+				<title>About | The 429 Project</title>
+				<meta name="description" content="The 429 Project is a compilation of how students spent the first 429 days of COVID, and how they discovered creativity through the pandemic." />
+			</Head>
 			<Section className="row align-items-center justify-content-center">
 				<Row>
 					<Col sm="8">

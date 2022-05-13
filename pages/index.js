@@ -28,8 +28,8 @@ export default function Index({ categories }) {
 
 	return <Layout>
 		<Head>
-		<title>Pixels and Print - Prototype</title>
-		<link rel="icon" href="/favicon.ico" />
+			<title>The 429 Project | Pixels and Print | Newhouse School at Syracuse University</title>
+			<meta name="description" content="When the world hit pause, so did our plans for classes, graduation, and careers. We learned to connect, to value our own health, and to continue moving forward. We continued to create. This is the story of how we spent the last 429 days, and how we created our own path within the pause. This is the 429 project." />
 		</Head>
 		<HomeIntro />
 			{categories.map((category,index) => {

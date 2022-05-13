@@ -1,7 +1,9 @@
 import {Fragment} from 'react'
 
+import Head from 'next/head'
 import Image from 'next/image'
 
+import BioImage from '../../components/BioImage'
 import Layout from '../../components/layout'
 import Container from '../../components/Container'
 import Group from '../../components/Group'
@@ -14,7 +16,7 @@ import Col from '../../components/col'
 
 import { getAllArtistSlugs, getSingleArtistBySlug } from '../../lib/api'
 import { formatRoles } from '../../lib/utils'
-import BioImage from '../../components/BioImage'
+
 
 export async function getStaticPaths() {
 	const paths = await getAllArtistSlugs();
@@ -36,14 +38,16 @@ export async function getStaticProps({ params }) {
 }
 
 export default function Artist({artistData}) {
-	const { title, featuredImage, slug, artistInformation, roles, years, relatedPost } = artistData;
-	const { portfolioUrl, firstName, lastName} = artistInformation;
-	const { relatedProjectArtist } = relatedPost;
-	const rolesArr = roles.edges.map(role => {
-		return role.node.name;
-	})
+	const { title, featuredImage, artistInformation, roles, years, relatedPost } = artistData;
+	const { portfolioUrl } = artistInformation;
 	return (
 		<Layout>
+			<Head>
+				<title>{title} | Artist | The 429 Project</title>
+				{featuredImage && 
+					<meta property="og:image" content={featuredImage.node.sourceUrl} />
+				}
+			</Head>
 			<Container>
 				<Main>
 					<Row justifyContent="center" marginBottom="4">
@@ -56,14 +60,15 @@ export default function Artist({artistData}) {
 						</>
 						}
 						<Col sm={7} flexDirection="column" justifyContent="center">
-							{/*<Heading level="5" color="red" sans fontWeight="bold">Artists</Heading>*/}
 							<Heading level="1">{title}</Heading>
 
 							{roles && 
 							<Group>
-								<Heading level="4" marginBottom="1">{years.edges.map(year => {
-									return year.node.name;
-								})}</Heading>
+								{years.edges.length > 0 && 
+									<Heading level="4" marginBottom="1">{years.edges.map(year => {
+										return year.node.name;
+									})}</Heading>
+								}
 								<Paragraph>{formatRoles(roles)}</Paragraph>
 							</Group>
 							}
@@ -110,8 +115,8 @@ export default function Artist({artistData}) {
 												key={index}
 												src={item.slide.sourceUrl}
 												alt={item.slide.altText}
-												width={item.slide.mediaDetails.width}
-												height={item.slide.mediaDetails.height}
+												width={item.slide.mediaDetails?.width}
+												height={item.slide.mediaDetails?.height}
 												layout="responsive"
 											/>
 											{item.slide.caption &&
