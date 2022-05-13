@@ -1,6 +1,6 @@
 //react
 import * as Scroll from 'react-scroll';
-import { SRLWrapper, useLightbox } from 'simple-react-lightbox-pro'
+//import { SRLWrapper, useLightbox } from 'simple-react-lightbox-pro'
 
 
 // next.js components
@@ -25,7 +25,7 @@ let ScrollLink = Scroll.Link
 let scroll = Scroll.animateScroll
 
 export default function HomeIntro() {
-	const { openLightbox, closeLightbox } = useLightbox()
+	//const { openLightbox, closeLightbox } = useLightbox()
 	const videoElement =[{
 			src: "https://www.youtube.com/watch?v=rmDGVIMoVgo",
 			caption: 'Project overview',
@@ -68,8 +68,14 @@ export default function HomeIntro() {
 				
 			</Col>
 			<Col lg={7}>
-				
-				<Frame type="video" clickHandler={() => { openLightbox() }}>
+				<Image
+					src="/images/429ExplainerThumbnail.jpg"
+					alt="About video"
+					width={1920}
+					height={1080}
+					onClick={() => { openLightbox() }}
+				/>
+				{/*<Frame type="video" clickHandler={() => { openLightbox() }}>
 					<Image
 						src="/images/429ExplainerThumbnail.jpg"
 						alt="About video"
@@ -77,8 +83,8 @@ export default function HomeIntro() {
 						height={1080}
 						onClick={() => { openLightbox() }}
 					/>
-				</Frame>
-				<SRLWrapper elements={videoElement} options={options} />
+</Frame>*/}
+				{/*<SRLWrapper elements={videoElement} options={options} />*/}
 				{/*<ScrollLink activeClass="active" to="reform" spy={true} smooth={true} duration={500}><ButtonUI type="angle-down" /></ScrollLink>*/}
 			</Col>
 		</Row>

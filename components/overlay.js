@@ -2,7 +2,7 @@ import React from 'react'
 
 // react
 import { useContext } from 'react'
-import { SRLWrapper, useLightbox } from 'simple-react-lightbox-pro'
+//import { SRLWrapper, useLightbox } from 'simple-react-lightbox-pro'
 
 // next.js components
 import Image from 'next/image'
@@ -43,29 +43,29 @@ export default function Overlay() {
 	const { relatedProjectArtist } = relatedArtist;
 	const { photoGallery, video } = projectInformation;
 	
-	const { openLightbox, closeLightbox } = useLightbox()
+	//const { openLightbox, closeLightbox } = useLightbox()
 
 	const elements = []
 
 	if (photoGallery) {
 		photoGallery.forEach(photoGalleryItem => {
 			const { slide } = photoGalleryItem;
-			elements.push({
+			/*elements.push({
 				src: slide.sourceUrl,
 				caption: slide.caption,
 				width: slide.mediaDetails.width,
 				height: slide.mediaDetails.height
-			});
+			});*/
 		})
 	}
 	const videoElement = []
 	if (video) {
-		videoElement.push({
+		/*videoElement.push({
 			src: video,
 			caption: 'Vimeo video',
 			autoplay: true,
 			showControls: true
-		})
+		})*/
 	}
 	const options = {
 		thumbnails: {
@@ -100,58 +100,32 @@ export default function Overlay() {
 			<Container>
 				<Row alignItemsCenter>
 					<Col xs="12" lg={8}>
-					{
-						(photoGallery && elements.length > 0) ? 
-						(
-						<>
-							<Frame type="photo_gallery" clickHandler={() => { openLightbox() }}>
-								<Image
-									src={featuredImage.node.sourceUrl}
-									alt={featuredImage.node.altText}
-									width={featuredImage.node.mediaDetails.width}
-									height={featuredImage.node.mediaDetails.height}
-								/>
-							</Frame>
-							<SRLWrapper elements={elements} options={options} />
-						</>
-						) : video ? 
-						(	
-						<>
-							<Frame type="video" clickHandler={() => { openLightbox() }}>
-								<Image
-									src={featuredImage.node.sourceUrl}
-									alt={featuredImage.node.altText}
-									width={featuredImage.node.mediaDetails.width}
-									height={featuredImage.node.mediaDetails.height}
-									onClick={() => { openLightbox() }}
-								/>
-							</Frame>
-							<SRLWrapper elements={videoElement} options={options} />
-						</>
-						) : (
-							<Image
-								src={featuredImage.node.sourceUrl}
-								alt={featuredImage.node.altText}
-								width={featuredImage.node.mediaDetails.width}
-								height={featuredImage.node.mediaDetails.height}
-							/>
-						)
-					}
+					<Image
+						src={featuredImage.node.sourceUrl}
+						alt={featuredImage.node.altText}
+						width={featuredImage.node.mediaDetails.width}
+						height={featuredImage.node.mediaDetails.height}
+					/>
 					</Col>
-					<Col xs="12" lg={4} flexDirection="column" justifyContent="center">
-						{relatedProjectArtist ? (
+				<Col xs="12" lg={4} flexDirection="column" justifyContent="center">
+					{relatedProjectArtist ? (
 						<Heading level="4" marginBottom="4">
-							<Link onClick={() => {
+							{relatedProjectArtist[0].title} <Pipe /> <ProjectTitle>{title}</ProjectTitle></Heading>
+					) : (
+						<Heading level="4" marginBottom="4"><ProjectTitle>{title}</ProjectTitle></Heading>
+					)}
+					{content &&
+						<div className={styles.contentContainer} dangerouslySetInnerHTML={{ __html: content }} />
+					}
+					<Paragraph>
+						<Link href={`/artists/${relatedProjectArtist[0].slug}`}>
+							<a style={{ "color": "white" }} onClick={() => {
 								setOverlayVisible(false)
-							}} href={`/artists/${relatedProjectArtist[0].slug}`} passHref>
-								<MyCustomLink>{relatedProjectArtist[0].title}</MyCustomLink>
-							</Link> <Pipe /> <ProjectTitle>{title}</ProjectTitle></Heading>
-						) : (
-							<Heading level="4" marginBottom="4"><ProjectTitle>{title}</ProjectTitle></Heading>
-						)}
-						{content &&
-							<div className={styles.contentContainer}dangerouslySetInnerHTML={{__html:content}} />
-						}
+							}}>
+								View artist and project
+							</a>
+						</Link>
+					</Paragraph>
 					</Col>
 				</Row>
 			</Container>

@@ -14,7 +14,7 @@ export default function MeetTheArtists() {
 					<Col>
 						<Heading level="2" textTransform="none">The journey doesn't here here.</Heading>
 						<CTAGroup justifyContentCenter>
-							<CTA label="Meet the artists" type="primary" linkTo="/meet-the-artists" />
+							<CTA label="Meet the artists" type="primary" linkTo="/artists" />
 						</CTAGroup>
 					</Col>
 				</Row>
