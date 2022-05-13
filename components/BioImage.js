@@ -10,7 +10,7 @@ const BioImage = ({featuredImage, size}) => {
 		[`${size}`] : size
 	});
 	return <div className={bioimageClasses} style={{
-		backgroundImage: `url(${featuredImage?.node.sourceUrl})`
+		backgroundImage: `url(${featuredImage.node.sourceUrl})`
 	}}/>
 }
 export default BioImage;
