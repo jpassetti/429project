@@ -14,6 +14,7 @@ import CTAGroup from './cta-group'
 import Frame from './frame'
 import Heading from './Heading'
 import Paragraph from './Paragraph'
+import ResponsiveVideo from './ResponsiveVideo'
 import Row from './row'
 import Section from './section'
 
@@ -68,13 +69,16 @@ export default function HomeIntro() {
 				
 			</Col>
 			<Col lg={7}>
-				<Image
+				<ResponsiveVideo>
+					<iframe width="560" height="315" src="https://www.youtube.com/embed/rmDGVIMoVgo" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+				</ResponsiveVideo>
+				{/*<Image
 					src="/images/429ExplainerThumbnail.jpg"
 					alt="About video"
 					width={1920}
 					height={1080}
 					onClick={() => { openLightbox() }}
-				/>
+				/>*/}
 				{/*<Frame type="video" clickHandler={() => { openLightbox() }}>
 					<Image
 						src="/images/429ExplainerThumbnail.jpg"
