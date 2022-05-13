@@ -3,4 +3,30 @@
 
 .navigation {
 	//height: 100%;
+	.list {
+		flex-direction: column;
+		list-style: none;
+		.item {
+			font-family: vars.$font_primary;
+			a {
+				color: white;
+				text-decoration: none;
+				padding-top: .5rem;
+				padding-bottom: .5rem;
+				display: block;
+				&:hover, &:focus {
+					text-decoration: underline;
+				}
+			}
+		}
+	}
+	.socialMediaList {
+		display: flex;
+		.socialMediaListItem {
+			margin-right: 1rem;
+			a {
+				color: white;
+			}
+		}
+	}
 }

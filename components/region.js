@@ -1,11 +1,12 @@
 import { useContext } from 'react'
 
-import Section from './section'
-import Masonry, { ResponsiveMasonry } from "react-responsive-masonry"
-
-import Row from './row'
-import Col from './col'
 import Card from './card'
+import Col from './col'
+import Heading from './Heading'
+import Masonry, { ResponsiveMasonry } from "react-responsive-masonry"
+import Paragraph from './Paragraph'
+import Row from './row'
+import Section from './section'
 
 import {
 	OverlayDisplayContext, OverlayContentContext
@@ -50,7 +51,7 @@ const sampleProjects = [
 ];
 
 export default function Region({name, tagline, posts}) {
-	console.log({posts});
+	//console.log({posts});
 
 	const [isOverlayVisible, setOverlayVisible] = useContext(OverlayDisplayContext);
 	const [overlayContent, setOverlayContent] = useContext(OverlayContentContext);
@@ -58,29 +59,29 @@ export default function Region({name, tagline, posts}) {
 		<Section id={name.toLowerCase()}>
 			<Row>
 				<Col sm={5}>
-					<h2>{name}</h2>
-					<p className="intro">{tagline}</p>
+					<Heading level="2">{name}</Heading>
+					<Paragraph intro>{tagline}</Paragraph>
 				</Col>
 			</Row>
 			
 			<ResponsiveMasonry
 				columnsCountBreakPoints={{ 768: 2, 1280: 3 }}
 			>
-			<Masonry columnsCount={3} gutter="16px">
-				{
-					posts.map((post,i) => {
-						const {node} = post;
-						return <Card 
-							key={`post${i}`} 
-							node={node} 
-							clickHandler={() => {
-								setOverlayVisible(true)
-								setOverlayContent(node)
-							}} />
-						
-					})
-				}
-			</Masonry>
+				<Masonry columnsCount={3} gutter="16px">
+					{
+						posts.map((post,i) => {
+							const {node} = post;
+							return <Card 
+								key={`post${i}`} 
+								node={node} 
+								clickHandler={() => {
+									setOverlayVisible(true)
+									setOverlayContent(node)
+								}} />
+							
+						})
+					}
+				</Masonry>
 			</ResponsiveMasonry>
 		</Section>
 	)

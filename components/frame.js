@@ -23,8 +23,8 @@ export default function Frame({children, type, clickHandler}) {
 			<div className={styles.frame_icon} onClick={clickHandler}>
 				<Image
 					src={`/images/icons/icon-${iconName}.svg`}
-					width={50}
-					height={50}
+					width={32}
+					height={32}
 					alt={`${type} icon`}
 				/>
 			</div>

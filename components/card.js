@@ -11,12 +11,16 @@ export default function Card({node, clickHandler}) {
 			className={styles.card}
 			onClick={clickHandler}	
 		>
-			<Image
-				src={featuredImage.node.sourceUrl}
-				alt={featuredImage.node.altText}
-				width={featuredImage.node.mediaDetails.width}
-				height={featuredImage.node.mediaDetails.height}
-			/>
+			{featuredImage && 
+				<Image
+					src={featuredImage.node.sourceUrl}
+					alt={featuredImage.node.altText}
+					width={featuredImage.node.mediaDetails.width}
+					height={featuredImage.node.mediaDetails.height}
+					layout="responsive"
+				/>
+			}
+			
 		</div>
 	)
 }

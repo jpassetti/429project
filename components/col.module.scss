@@ -1,25 +1,14 @@
 @use '../styles/abstracts/mixins';
 
 .col {
-	padding-left: 1rem;
-	padding-right: 1rem;
+	padding-left: .5rem;
+	padding-right: .5rem;
 	width: 100%;
 	margin-bottom: 1rem;
-	&--2{
-		width: 16.66666%;
-
-	}
-	&--3{
-		width: 25%;
-
-	}
-	&--6{
-		width: 50%;
-
-	}
-	&--9{
-		width: 75%;
-
+	@for $i from 1 through 12 {
+		&--#{$i} {
+			width: calc(100% * (#{$i}/12));
+		}
 	}
 	&.vertical-align {
 		display: flex;
@@ -69,5 +58,11 @@
 			}	
 		}
 	} // col tablet
+	@include mixins.marginTops();
+	@include mixins.marginBottoms();
+	@include mixins.textAligns();
+	@include mixins.flexDirections();
+	@include mixins.justifyContents();
+	@include mixins.alignItems();
 } // col
 

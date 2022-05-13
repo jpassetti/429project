@@ -1,3 +1,24 @@
+@use './vars';
+
+$justifyContentValues: flex-start, flex-end, center, space-between, space-around, space-evenly;
+$alignItemValues: flex-start, flex-end, center, stretch, baseline;
+$textAlignmentValues: left, center, right;
+$flexDirectionValues: row, row-reverse, column, column-reverse;
+$textTransformValues: uppercase, lowercase, none;
+$fontColorValues: (
+	"red" : vars.$color_red, 
+	"lightblue": vars.$color_lightblue,
+	"gray" : vars.$color_gray,
+	"black" : vars.$color_black, 
+	"white" : vars.$color_white
+);
+$fontWeightValues: (
+	"normal" : 400,
+	"bold" : 700,
+	"400" : 400,
+	"700" : 700
+);
+
 @mixin buildFont($font, $size:1.5rem, $color:blue, $weight:400, $marginBottom:1rem) {
 	font-family: $font;
 	font-size: $size;
@@ -63,3 +84,75 @@
 	// error warn if string does not match or it is not a length
 	
 }
+
+
+
+@mixin textAligns() {
+	@each $value in $textAlignmentValues {
+		&.text-align-#{$value} {
+			text-align: $value;
+		}
+	}
+}
+
+@mixin marginBottoms() {
+	&.margin-bottom-0 {
+		margin-bottom: 0;
+	}
+	@for $i from 1 through 12 {
+		&.margin-bottom-#{$i} {
+			margin-bottom: ($i * .5) + rem
+		}
+	}
+}
+@mixin marginTops() {
+	@for $i from 1 through 12 {
+		&.margin-top-#{$i} {
+			margin-top: ($i * .5) + rem
+		}
+	}
+}
+
+@mixin textTransforms() {
+	@each $value in $textTransformValues {
+		&.text-transform-#{$value} {
+			text-transform: $value;
+		}
+	}
+}
+
+@mixin justifyContents() {
+	@each $value in $justifyContentValues {
+		&.justify-content-#{$value} {
+			display: flex;
+			justify-content: $value;
+		}
+	}
+}
+
+@mixin alignItems() {
+	@each $value in $alignItemValues {
+		&.align-items-#{$value} {
+			display: flex;
+			align-items: $value;
+		}
+	}
+}
+
+@mixin flexDirections() {
+	@each $value in $flexDirectionValues {
+		&.flex-direction-#{$value} {
+			display: flex;
+			flex-direction: $value;
+		}
+	}
+}
+
+@mixin fontColors() {
+	@each $name, $value in $fontColorValues {
+		&.font-color-#{$name} {
+			color: $value;
+		}
+	}
+}
+

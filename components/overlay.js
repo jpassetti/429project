@@ -1,3 +1,5 @@
+import React from 'react'
+
 // react
 import { useContext } from 'react'
 import { SRLWrapper, useLightbox } from 'simple-react-lightbox-pro'
@@ -7,10 +9,15 @@ import Image from 'next/image'
 
 // custom components
 import ButtonUI from './button-ui'
-import Container from './container'
+import Container from './Container'
 import Row from './row'
 import Col from './col'
 import Frame from './frame'
+import Heading from './Heading'
+import Link from 'next/link'
+import Paragraph from './Paragraph'
+import Pipe from './Pipe'
+import ProjectTitle from './ProjectTitle'
 
 // styles
 import styles from './overlay.module.scss'
@@ -45,7 +52,7 @@ export default function Overlay() {
 			const { slide } = photoGalleryItem;
 			elements.push({
 				src: slide.sourceUrl,
-				caption: slide.altText,
+				caption: slide.caption,
 				width: slide.mediaDetails.width,
 				height: slide.mediaDetails.height
 			});
@@ -80,12 +87,19 @@ export default function Overlay() {
 			showCaption: true
 		}
 	}
+	const MyCustomLink = React.forwardRef(({ onClick, href, children }, ref) => {
+		return (
+			<a href={href} onClick={onClick} ref={ref}>
+				{children}
+			</a>
+		)
+	})
 
 	return <div className={styles.overlay}>
 		<ButtonUI type="close" id="overlay_closeBtn" clickHandler={() => { setOverlayVisible(false) }} />
 			<Container>
 				<Row alignItemsCenter>
-					<Col lg={8}>
+					<Col xs="12" lg={8}>
 					{
 						(photoGallery && elements.length > 0) ? 
 						(
@@ -124,15 +138,20 @@ export default function Overlay() {
 						)
 					}
 					</Col>
-					<Col lg={4}>
-					{relatedProjectArtist ? (
-						<h4>{relatedProjectArtist[0].title} <span className="pipe">|</span> <span className="title">{title}</span></h4>
-					) : (
-						<h4><span className="title">{title}</span></h4>
-					)}
-					{content &&
-						<div dangerouslySetInnerHTML={{ __html: content }}></div>
-					}
+					<Col xs="12" lg={4} flexDirection="column" justifyContent="center">
+						{relatedProjectArtist ? (
+						<Heading level="4" marginBottom="4">
+							<Link onClick={() => {
+								setOverlayVisible(false)
+							}} href={`/artists/${relatedProjectArtist[0].slug}`} passHref>
+								<MyCustomLink>{relatedProjectArtist[0].title}</MyCustomLink>
+							</Link> <Pipe /> <ProjectTitle>{title}</ProjectTitle></Heading>
+						) : (
+							<Heading level="4" marginBottom="4"><ProjectTitle>{title}</ProjectTitle></Heading>
+						)}
+						{content &&
+							<div className={styles.contentContainer}dangerouslySetInnerHTML={{__html:content}} />
+						}
 					</Col>
 				</Row>
 			</Container>

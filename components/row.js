@@ -4,12 +4,12 @@ import styles from './row.module.scss'
 
 let cx = classNames.bind(styles);
 
-export default function Row({ children, alignItemsCenter = false, justifyContentSpaceBetween = false, justifyContentCenter=false}) {
+export default function Row({ children, alignItems, justifyContent, marginBottom}) {
 	let rowClasses = cx({
 		row: true,
-		['align-items-center']: alignItemsCenter,
-		['justify-content-space-between']: justifyContentSpaceBetween,
-		['justify-content-center']: justifyContentCenter
+		[`align-items-${alignItems}`]: alignItems,
+		[`justify-content-${justifyContent}`]: justifyContent,
+		[`margin-bottom-${marginBottom}`] : marginBottom
 	});
 
 	return (

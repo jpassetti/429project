@@ -1,0 +1,8 @@
+@use '../styles/abstracts/vars';
+
+.pipe {
+	color: vars.$color_red;
+	font-weight: 300;
+	margin-right: .15rem;
+	margin-left: .15rem;
+}

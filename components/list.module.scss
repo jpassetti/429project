@@ -1,27 +1,51 @@
 @use '../styles/abstracts/vars';
 @use '../styles/abstracts/mixins';
 
-.primary {
+.list {
 	display: flex;
 	flex-direction: column;
-	li {
+	.item {
 		margin: 0 .5rem;
+		font-family: vars.$font_primary;
+		font-size: 1rem;
 		a {
 			font-family: vars.$font_primary;
 			text-decoration: none;
 			display: block;
-			padding: 1rem 0;
+			padding: .5rem 0;
 			cursor: pointer;
-			font-size: 2rem;
-			font-weight: bold;
 			color: vars.$color_white;
 		}
-		p {
-			color: vars.$color_white;
+		&.large {
+			a {
+				font-weight: bold;
+				font-size: 2rem;
+				@include mixins.breakpoint(sm) {
+					font-size: 2.25rem;
+				}
+				@include mixins.breakpoint(md) {
+					font-size: 2.5rem;
+				}
+				@include mixins.breakpoint(lg) {
+					font-size: 3rem;
+				}
+			}
 		}
 	}
-}
-.secondary {
-	display: flex;
-	flex-direction: column;
+	&.primary {
+
+	}
+	&.secondary {
+		display: flex;
+		flex-direction: column;
+	}
+	&.noBullets {
+		list-style: none;
+	}
+	&.teamList {
+		line-height: 1.6;
+		margin-left: 0;
+		li {margin-left: 0;}
+	}
+	@include mixins.marginBottoms();
 }

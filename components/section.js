@@ -4,7 +4,7 @@ import styles from './section.module.scss'
 
 let cx = classNames.bind(styles);
 
-export default function Section({ id, children, className, textAlignCenter=false}) {
+export default function Section({ id, children, textAlignCenter=false}) {
 	let sectionClasses = cx({
 		section: true,
 		['text-align-center']: textAlignCenter,

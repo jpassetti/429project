@@ -1,0 +1,137 @@
+@use '../styles/abstracts/vars';
+@use '../styles/abstracts/mixins';
+
+.heading {
+	font-family: vars.$font_primary;
+	line-height: 1.1;
+	&.heading1 {
+		font-size: 2rem;
+		line-height: 1;
+		text-transform: uppercase;
+		font-weight: 700;
+		margin-bottom: 1rem;
+
+		@include mixins.breakpoint(sm) {
+			font-size: 2rem;
+		}
+
+		@include mixins.breakpoint(md) {
+			font-size: 2.5rem;
+		}
+
+		@include mixins.breakpoint(lg) {
+			font-size: 3rem;
+		}
+
+		@include mixins.breakpoint(xl) {
+			font-size: 4rem;
+		}
+	}
+	&.heading2 {
+		font-size: 1.5rem;
+		text-transform: uppercase;
+		font-weight: 700;
+		margin-bottom: 1rem;
+		@include mixins.breakpoint(sm) {
+			font-size: 2rem;
+		}
+	
+		@include mixins.breakpoint(md) {
+			font-size: 2.6rem;
+		}
+		&.dek {
+			text-transform: none;
+			font-style: italic;
+			font-weight: 300;
+			font-size: 1.5rem;
+		}
+		&.small {
+			font-size: 1.3rem;
+			a {
+				color: inherit;
+				text-decoration: none;
+				&:hover, &:focus {
+					text-decoration: underline;
+				}
+			}
+			@include mixins.breakpoint(sm) {
+				font-size: 1.6rem;
+			}
+		
+			@include mixins.breakpoint(md) {
+				font-size: 1.8rem;
+			}
+		}
+	}
+	&.heading3 {
+		font-size: 1rem;
+		text-transform: uppercase;
+		font-weight: 700;
+		margin-bottom: 1rem;
+
+		@include mixins.breakpoint(sm) {
+			font-size: 1.1rem;
+		}
+
+		@include mixins.breakpoint(md) {
+			font-size: 1.2rem;
+		}
+		a {
+			color: inherit;
+			text-decoration: none;
+			&:hover,
+			&:focus {
+				text-decoration: underline;
+			}
+		}
+	}
+	&.heading4 {
+		font-size: 0.9rem;
+		text-transform: uppercase;
+		font-weight: 700;
+		@include mixins.breakpoint(sm) {
+			font-size: 1rem;
+		}
+
+		@include mixins.breakpoint(md) {
+			font-size: 1.15rem;
+		}
+
+		span.pipe {
+			color: vars.$color_red;
+			margin-left: 0.25rem;
+			margin-right: 0.25rem;
+			font-weight: 300;
+		}
+
+		span.title {
+			font-weight: 400;
+			font-style: italic;
+			text-transform: none;
+		}
+		a {
+			color: inherit;
+			text-decoration: none;
+			&:hover, &:focus {
+				text-decoration: underline;
+			}
+		}
+	}
+	&.heading5 {
+		font-size: 1rem;
+		font-family: vars.$font_secondary;
+		&.sans {
+			font-family: vars.$font_primary;
+		}
+	}
+	&.heading6 {
+		font-size: 0.75rem;
+	}
+	@include mixins.textTransforms();
+	@include mixins.marginBottoms();
+	@include mixins.marginTops();
+	@include mixins.textAligns();
+	@include mixins.fontColors();
+}
+
+

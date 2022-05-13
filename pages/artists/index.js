@@ -1,7 +1,7 @@
 import Layout from '../../components/layout'
-import Container from '../../components/container'
+import Container from '../../components/Container'
+import Heading from '../../components/Heading'
 import Main from '../../components/main'
-import Section from '../../components/section'
 import Row from '../../components/row'
 import Col from '../../components/col'
 import ArtistCard from '../../components/artistcard'
@@ -14,9 +14,9 @@ export default function Artists({ artistsArr }) {
 			<Container>
 			<Main>
 			
-			<h1 style={{"text-align": "center"}}>Meet the Artists</h1>
+			<Heading level="1" textAlign="center">Meet the Artists</Heading>
 			
-			<Row justifyContentCenter>
+			<Row justifyContent="center">
 			{artistsArr.edges.map((edge,i) => {
 				const { node } = edge;
 

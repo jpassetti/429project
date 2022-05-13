@@ -1,3 +1,5 @@
+@use '../styles/abstracts/vars';
+
 .overlay {
 	width: 100vw;
 	height: 100vh;
@@ -14,4 +16,13 @@
 	position: absolute;
 	top: 1rem;
 	right: 1rem;
+}
+.contentContainer {
+	p {
+		font-size: .9rem;
+			font-family: vars.$font_secondary;
+			line-height: 1.4;
+			margin-bottom: 1rem;
+			color: white;
+	}
 }

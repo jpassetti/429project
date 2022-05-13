@@ -1,19 +1,25 @@
-import Container from './container'
+import Container from './Container'
 import Row from './row'
 import Col from './col'
+import Link from 'next/link'
+import Logo from './Logo'
+import Navigation from './Navigation'
 
 import styles from './footer.module.scss';
+import List from './list';
 
 export default function Footer() {
 	return <footer className={styles.footer}>
 		<Container>
-			<Row justifyContentSpaceBetween>
+			<Row justifyContent="space-between">
 				<Col sm={3}>
-				Nav left
+					<Navigation.FooterNav />
 				</Col>
 				<Col sm={3}>
-					Social media icons<br />
-					Logo
+					{/*<Navigation.FooterSocialMedia marginBottom={1} />*/}
+					<Link href="/">
+						<a><Logo color="white" size={.75} /></a>
+					</Link>
 				</Col>
 			</Row>
 		</Container>

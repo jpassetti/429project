@@ -1,0 +1,29 @@
+@use '../styles/abstracts/vars';
+@use '../styles/abstracts/mixins';
+
+.paragraph {
+	font-size: .9rem;
+	font-family: vars.$font_secondary;
+	line-height: 1.4;
+	margin-bottom: 1rem;
+
+	&.intro {
+		font-size: 1.1rem;
+		font-family: vars.$font_primary;
+		font-weight: 300;
+		@include mixins.breakpoint(sm) {
+			font-size: 1.25rem;
+		}
+		@include mixins.breakpoint(md) {
+			font-size: 1.5rem;
+		}
+	}
+	&.white {
+		color: white;
+	}
+	&.sans {
+		font-family: vars.$font_primary;
+	}
+	@include mixins.marginTops();
+	@include mixins.marginBottoms();
+}

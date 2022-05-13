@@ -4,7 +4,7 @@
 	border: 0;
 	width: 3rem;
 	height: 3rem;
-	background-color:transparent;
+	background-color: transparent;
 	cursor: pointer;
 	&.close {
 		position: absolute;
@@ -13,6 +13,13 @@
 	}
 	&.menu {
 		background-color: vars.$color_red;
+		img {
+			width: 1.5rem !important;
+			height: 1.5rem !important;
+		}
+	}
+	&.circle {
+		border-radius: 3rem;
 	}
 }
 .flyoutCloseBtn {
